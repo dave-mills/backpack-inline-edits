@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Illuminate\Http\Request;
 use App\Http\Requests\TestRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
@@ -28,8 +29,38 @@ class TestCrudController extends CrudController
 
     protected function setupListOperation()
     {
-        // TODO: remove setFromDb() and manually define Columns, maybe Filters
-        $this->crud->setFromDb();
+        $this->crud->setColumns([
+            [
+                'name' => 'ngo',
+                'type' => 'editable_text',
+                'label' => 'NGO',
+            ],
+            [
+                'name' => 'district',
+                'type' => 'editable_text',
+                'label' => 'District',
+            ],
+            [
+                'name' => 'served_bens',
+                'type' => 'number',
+                'label' => '# of Served Beneficiaries',
+            ],
+            [
+                'name' => 'served_bens_confirm',
+                'type' => 'editable_number',
+                'label' => 'Confirm # of Served Beneficiaries',
+            ],
+            // [
+            //     'name' => 'comments',
+            //     'type' => 'editable_text',
+            //     'label' => 'Explanation of non-matching numbers',
+            // ],
+            [
+                'name' => 'confirmed',
+                'type' => 'editable_checkbox',
+                'label' => 'Confirmed',
+            ],
+        ]);
     }
 
     protected function setupCreateOperation()
@@ -44,4 +75,27 @@ class TestCrudController extends CrudController
     {
         $this->setupCreateOperation();
     }
+
+    public function editable (Request $request)
+    {
+
+        $id = $request->pk;
+        $propertyName = $request->name;
+        $value = $request->value;
+
+        $item = $this->crud->model->find($id);
+
+        if( !$item) {
+            return response('cannot find the correct item to update', 500);
+        }
+
+        $item->$propertyName = $value;
+
+        if(! $item->save()) {
+            return response("Cannot save the item with the property $propertyName = $value", 500);
+        }
+
+        return $item;
+    }
+
 }

@@ -52,7 +52,7 @@ return [
         // Load the fonts separately (so that you can replace them at will):
         'packages/source-sans-pro/source-sans-pro.css',
         'packages/line-awesome/css/line-awesome.min.css',
-
+        'packages/bootstrap4-editable/css/bootstrap-editable.css',
         // Example (the fonts above, loaded from CDN instead)
         // 'https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome-font-awesome.min.css',
         // 'https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic',
@@ -121,6 +121,7 @@ return [
     'scripts' => [
         // Backstrap includes jQuery, Bootstrap, CoreUI, PNotify, Popper
         'packages/backpack/base/js/bundle.js',
+        'packages/bootstrap4-editable/js/bootstrap-editable.min.js'
 
         // examples (everything inside the bundle, loaded from CDN)
         // 'https://code.jquery.com/jquery-3.4.1.min.js',
@@ -193,7 +194,7 @@ return [
     |--------------------------------------------------------------------------
     */
 
-    // Fully qualified namespace of the User model
+    // Fully qualified  pnamespace of the User model
     'user_model_fqn' => App\Models\BackpackUser::class,
 
     // The classes for the middleware to check if the visitor is an admin

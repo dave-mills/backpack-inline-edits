@@ -13,4 +13,5 @@ Route::group([
 ], function () { // custom admin routes
 
     Route::crud('test', 'TestCrudController');
+    Route::post('test/editable', 'TestCrudController@editable');
 }); // this should be the absolute last line of this file
