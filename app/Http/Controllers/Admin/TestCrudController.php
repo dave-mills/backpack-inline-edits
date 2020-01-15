@@ -25,6 +25,18 @@ class TestCrudController extends CrudController
         $this->crud->setModel('App\Models\Test');
         $this->crud->setRoute(config('backpack.base.route_prefix') . '/test');
         $this->crud->setEntityNameStrings('test', 'tests');
+
+        $this->data['widgets']['before_content'] = [
+            [
+                'type' => 'card',
+                'wrapperClass' => 'col-sm-12',
+                'class' => 'card bg-info',
+                'content' => [
+                    'header' => 'Example to test inline editing on DataTables',
+                    'body' => '<p>In the table below, items with a blue dotted line underneath are editable without reloading the page. Click on a value to edit it. After editing, press "enter" or click the "tick" button and the new value will be sent to the database.</p><p>Ticking or un-ticking the checkbox will also update the database directly</p>'
+                ]
+            ]
+        ];
     }
 
     protected function setupListOperation()
