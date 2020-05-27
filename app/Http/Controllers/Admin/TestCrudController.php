@@ -43,30 +43,25 @@ class TestCrudController extends CrudController
     {
         $this->crud->setColumns([
             [
-                'name' => 'ngo',
+                'name' => 'company',
                 'type' => 'editable_text',
-                'label' => 'NGO',
+                'label' => 'Company',
             ],
             [
-                'name' => 'district',
+                'name' => 'location',
                 'type' => 'editable_text',
-                'label' => 'District',
+                'label' => 'Location',
             ],
             [
-                'name' => 'served_bens',
+                'name' => 'fixed_number',
                 'type' => 'number',
-                'label' => '# of Served Beneficiaries',
+                'label' => 'Non-editable Number',
             ],
             [
-                'name' => 'served_bens_confirm',
+                'name' => 'editable_number',
                 'type' => 'editable_number',
-                'label' => 'Confirm # of Served Beneficiaries',
+                'label' => 'Editable Number',
             ],
-            // [
-            //     'name' => 'comments',
-            //     'type' => 'editable_text',
-            //     'label' => 'Explanation of non-matching numbers',
-            // ],
             [
                 'name' => 'confirmed',
                 'type' => 'editable_checkbox',

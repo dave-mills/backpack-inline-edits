@@ -14,10 +14,10 @@ class CreateTestsTable extends Migration
     {
         Schema::create('tests', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('ngo');
-            $table->string('district');
-            $table->integer('served_bens')->unsigned();
-            $table->integer('served_bens_confirm')->unsigned()->nullable();
+            $table->string('company');
+            $table->string('location');
+            $table->integer('fixed_number')->unsigned();
+            $table->integer('editable_number')->unsigned()->nullable();
             $table->boolean('confirmed')->default(0);
             $table->timestamps();
         });
